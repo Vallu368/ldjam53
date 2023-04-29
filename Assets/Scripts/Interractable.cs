@@ -6,6 +6,7 @@ public class Interractable : MonoBehaviour
 {
     DialogueHandler dialogue;
     public string dialogueText;
+    public bool hasItemNeeded;
 
     private void Awake()
     {
@@ -14,6 +15,11 @@ public class Interractable : MonoBehaviour
 
     public void Interract()
     {
+        if (hasItemNeeded)
+        {
+            dialogueText = null;
+
+        }
         if (!dialogue.textIsActive)
         {
             if (dialogueText.Length > 0)
@@ -24,6 +30,8 @@ public class Interractable : MonoBehaviour
             else Debug.Log("no dialogue");
         }
         else Debug.Log("already interracting with something");
+
+        
         
     }
 }

@@ -72,15 +72,14 @@ public class DialogueHandler : MonoBehaviour
 
                     if (startingCharacterRange == characterCount)
                     {
-                        Debug.Log("max char count");
-                        yield return new WaitForSeconds(5f);
+                       // Debug.Log("max char count");
+                        yield return new WaitForSeconds(1f);
                         text.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
 
                         yield return new WaitForSeconds(1.0f);
 
                         text.ForceMeshUpdate();
 
-                        yield return new WaitForSeconds(1.0f);
                         text.gameObject.SetActive(false);
                         textIsActive = false;
                     }
