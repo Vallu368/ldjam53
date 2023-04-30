@@ -9,17 +9,23 @@ public class DoorKnob : MonoBehaviour
     public string dialogueText;
     public GameObject doorClosedBg;
     public GameObject doorOpenBg;
+    AudioSource openDoor;
+    AudioSource examine;
 
     private void Awake()
     {
         dialogue = GameObject.Find("DialogueHandler").GetComponent<DialogueHandler>();
         inventory = GameObject.Find("InventoryHandler").GetComponent<InventoryHandler>();
+        openDoor = GameObject.Find("OpenDoorSound").GetComponent<AudioSource>();
+        examine = GameObject.Find("ExamineSound").GetComponent<AudioSource>();
+
     }
 
     public void Interract()
     {
         if (inventory.hasKeys)
         {
+            openDoor.Play();
             dialogueText = null;
             doorClosedBg.SetActive(false);
             doorOpenBg.SetActive(true);
@@ -28,7 +34,7 @@ public class DoorKnob : MonoBehaviour
         }
         if (!inventory.hasKeys)
         {
-
+            examine.Play();
 
             if (!dialogue.textIsActive)
             {
