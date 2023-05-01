@@ -25,11 +25,12 @@ public class DoorKnob : MonoBehaviour
     {
         if (inventory.hasKeys)
         {
+            Debug.Log("interracted with keys");
             openDoor.Play();
             dialogueText = null;
             doorClosedBg.SetActive(false);
             doorOpenBg.SetActive(true);
-            Destroy(this);
+            Destroy(this.gameObject);
 
         }
         if (!inventory.hasKeys)

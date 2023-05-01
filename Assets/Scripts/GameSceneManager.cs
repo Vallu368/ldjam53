@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameSceneManager : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class GameSceneManager : MonoBehaviour
     public void FadeOutandIn()
     {
         StartCoroutine(FadeOutFadeIn());
+    }
+    public void End()
+    {
+        StartCoroutine(FadeOut());
     }
     private void Awake()
     {
@@ -38,7 +43,9 @@ public class GameSceneManager : MonoBehaviour
                 yield return null;
             }
             Debug.Log("jobs done");
-        }
+        yield return new WaitForSeconds(6f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public IEnumerator FadeIn()
     {
         blackScreen.SetActive(true);
@@ -59,6 +66,7 @@ public class GameSceneManager : MonoBehaviour
     }
     public IEnumerator FadeOutFadeIn()
     {
+        Debug.Log("started fading");
         blackScreen.SetActive(true);
         Color objectColor = blackScreen.GetComponent<Image>().color;
         float fadeAmount;

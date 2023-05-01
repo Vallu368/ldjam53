@@ -8,6 +8,10 @@ public class Flashlight : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+    public void TurnOn()
+    {
+        this.gameObject.SetActive(true);
+    }
     private void Update()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
